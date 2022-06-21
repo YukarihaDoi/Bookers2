@@ -22,26 +22,18 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @book.destroy
     redirect_to user_path
-    # show(user)のリンクに飛ぶ
   end
 
 
-  # def edit
-  #   @book = Book.find(params[:id])
-  # end
+  def edit
+    @book = Book.find(params[:id])
+  end
 
-  # def update
-  #   @book = Book.find(params[:id])
-
-  #   if @book.update(book_params)
-  #     flash[:notice] = "successfully"
-  #     redirect_to user_path
-  #     # show(user)のリンクに飛ぶ
-  #   else
-  #     render :edit
-  #   end
-
-  # end
+  def update
+    @book = Book.find(params[:id])
+　　@book.update(book_params)
+    redirect_to user_path
+  end
 
   private
 
