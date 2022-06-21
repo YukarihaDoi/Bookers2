@@ -1,20 +1,23 @@
 <!--ユーザーのマイページの作成-->
 <p>え</p>
+
+<!--＜左＞-->
 <!--User info部分1-->
-<div>
-  <h3><%= @user.name %></h3>
-  <%= image_tag @user.get_profile_image(100,100) %>
-
-  <% if @user == current_user %>
-
-    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-
-  <% end %>
-
+<%= render 'user_info',book: @book  %>
 <!--User info部分1-->
 
 
+ <!--＜左＞-->
+ <div>
+   <h3><%= user.name %></h3>
+   <%= image_tag user.get_profile_image(100,100) %>
 
+   <% if @user == current_user %>
+   <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
+   <% end %>
+ </div>
+
+<!--＜右＞-->
 </div>
 <!-- ユーザーの投稿一覧 -->
 

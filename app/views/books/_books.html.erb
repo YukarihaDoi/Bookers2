@@ -1,30 +1,18 @@
-<!--本全体（book）-->
-<!--editのback先-->
-<!--User infoが部分テンプレートに正しく実装されている-->
 
-<%= render 'user_info',book: @book  %>
-
-
+<!--1、本全体の情報-->
 <% @book.each do |book| %>
 <div>
 <p>投稿ユーザー画像：<%= image_tag book.user.get_profile_image(100,100) %></p>
 　<!--その人のマイページに飛ぶ-->
-
-
   <!--%= link_to user_path(book.id) do %>-->
   <p>ユーザーネーム：<%= book.user.name %></p>
   <!--% end %>-->
   <!--その人のマイページに飛ぶ-->
-
-
   <%= link_to book_path(book.id) do %>
   <p>Title：<%= book.title %></p>
   <% end %>
   <!--その本の詳細ページに飛ぶ-->
-
-
-
-  <p>Opinion：<%= book.body %></p>
-
+   <p>Opinion：<%= book.body %></p>
 </div>
 <% end %>
+
