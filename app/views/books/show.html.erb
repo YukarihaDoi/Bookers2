@@ -1,0 +1,20 @@
+<!--bookのshowページの作成-->
+
+
+
+<!--User infoが部分テンプレートに正しく実装されている-->
+
+<div>
+  
+  <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
+  <p>ユーザーネーム：<%= @book.user.name %></p>
+  <p>Title：<%= @book.title %></p>
+  <p>Opinion：<%= @book.body %></p>
+  <!--<p>投稿日：%= @book.created_at.strftime('%Y/%m/%d') %></p>-->
+
+  <% if @book.user == current_user %>
+    <%= link_to "destroy", book_path(@book), method: :delete %>
+    <!--%= link_to "edit", books_edit_path(@book.id), method: :patch %>-->-->
+  <% end %>
+
+</div
