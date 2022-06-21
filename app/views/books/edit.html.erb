@@ -10,7 +10,6 @@
     <% end %>
 <% end %>
 
-<!--元々の記述-->
 <%= form_with model: @book, url: book_path, method: :patch do |f| %>
 
   <h4>Title</h4>
@@ -23,7 +22,7 @@
 <% end %>
 
 
-<!--<p><span>%= link_to "Show", show_path(@book.id) %></span>|<span>%= link_to "Back", books_path %></span></p>-->
+<p><span><%= link_to "Show", book_path %></span>|<span><%= link_to "Back", books_path %></span></p>-->
 
 
 <!--form_withのmodel設定が正しい-->
