@@ -1,5 +1,6 @@
 <!--ユーザーのマイページの作成-->
-
+<p>え</p>
+<!--User info部分1-->
 <div>
   <h3><%= @user.name %></h3>
   <%= image_tag @user.get_profile_image(100,100) %>
@@ -9,6 +10,10 @@
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
 
   <% end %>
+
+<!--User info部分1-->
+
+
 
 </div>
 <!-- ユーザーの投稿一覧 -->
@@ -21,11 +26,11 @@
   <p>ユーザー：<%= image_tag book.user.get_profile_image(100,100) %></p>
   <p>ユーザーネーム：<%= book.user.name %></p>
   <p>Title：<%= book.title %></p>
+  <!--その本の詳細ページに飛ぶ-->
   <p>Opinion：<%= book.body %></p>
 
   <% if @user == current_user %>
-    <!--<p>%= link_to "本編集", edit_book_path(@book) %></p>-->
-    <!--<p>%= link_to "本削除", book_path(@book), method: :delete %></p>-->
+
   <% end %>
 
 </div>

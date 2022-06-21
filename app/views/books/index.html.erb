@@ -1,12 +1,23 @@
+<!--本全体（book）-->
+<!--editのback先-->
+
+
+<p>あ</p>
+
+<!--User infoが部分テンプレートに正しく実装されている-->
 
 <% @book.each do |book| %>
 <div>
-  <!--%= image_tag book.get_image %>-->
+
   <p>投稿ユーザー画像：<%= image_tag book.user.get_profile_image(100,100) %></p>
+　<!--その人のマイページに飛ぶ-->
   
   <p>ユーザーネーム：<%= book.user.name %></p>
-  <p>ユーザーネーム：<%= book.user.name %></p>
+  <!--その人のマイページに飛ぶ-->
+
   <p>Title：<%= book.title %></p>
+  <!--その本の詳細ページに飛ぶ-->
+
   <p>Opinion：<%= book.body %></p>
 
 </div>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "homes#top"
   get 'homes/about' => "homes#about" ,as:'about'
+  get 'users' => "users#index" ,as:'user_index'
 
   # get 'books/show'
   # get 'books/index'
