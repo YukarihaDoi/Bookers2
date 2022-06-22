@@ -1,42 +1,39 @@
-<!--その本の詳細（book→title)ページ-->
-<!--editの先-->
-
-<!--＜左＞-->
- <div>
-  　<p><%= @book.user.name %></p>
-  　<%= image_tag @book.user.get_profile_image(100,100) %>
-
-　<% if @user == current_user %>
-   <p><%= link_to "プロフィール編集", edit_user_path %></p>
-   <% end %>
-   <!--自分のeditに飛ぶ-->
- </div>
 
 
-<h1>画像投稿フォーム</h1>
-  <%= form_with model: @new_book do |f| %>
 
-    <h4>Title</h4>
-      <%= f.text_field :title %>
-    <h4>Opinion</h4>
-      <%= f.text_area :body %>
-    <%= f.submit 'Create Book' %>
-  <% end %>
-</div>
-<!--＜左＞-->
+
+<!--本詳細ページ-->
+
+
+
+  <!--＜左＞-->
+ <%= render 'books/newform', book: @nbook  %>
+  <!--＜左＞-->
+
+
 
  <!--＜右＞-->
   <div>
-  <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
-  <p><%= @book.user.name %></p>
-  <p>Title：<%= @book.title %></p>
-  <p>Opinion：<%= @book.body %></p>
-  <!--<p>投稿日：%= @book.created_at.strftime('%Y/%m/%d') %></p>-->
 
-  <% if @book.user == current_user %>
+    <div>
+      <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
+      <p><%= @book.user.name %></p>
+    </div>
+
+
+    <!--%= link_to "",book_path(book.id) do %>-->
+      <p>Title：<%= @book.title %></p>
+    <!--% end %>-->
+
+
+    <p>Opinion：<%= @book.body %></p>
+
+
+    <% if @book.user == current_user %>
     <%= link_to "destroy", book_path(@book), method: :delete %>
-    <%= link_to "edit", edit_book_path %>-->
-  <% end %>
+    <%= link_to "edit", edit_book_path %>
+    <% end %>
+
   </div>
 
   <!--＜右＞-->

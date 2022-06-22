@@ -1,38 +1,38 @@
 class BooksController < ApplicationController
 
+# before_action :user_check, only: [:edit,:update]
   # newbook
   def new
-    @book = Book.new
+    @nbook = Book.new
   end
 
   def create
-    @book = Book.new(book_params)
-    @book.user_id = current_user.id
-    @book.save
-    redirect_to books_path
+    @nbook = Book.new(book_params)
+    @nbook.user_id = current_user.id
+    @nbook.save
+    flash[:notice] = "successfully"
+    redirect_to user_path(current_user.id)
   end
 
 
   # books_path
   def index
-    @book = Book.all
-    @new_book = Book.new
-    @user =  current_user
+    @books = Book.all
+
+    @nbook = Book.new
+    @user = current_user
   end
 
-
-  # book_path(book.id)
   def show
-    @new_book = Book.new
+    @nbook = Book.new
     @book = Book.find(params[:id])
-    # その人の情報が見れるように
     @user = @book.user
   end
 
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    redirect_to user_path
+    redirect_to user_path(current_user.id)
   end
 
 
@@ -42,9 +42,10 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
+
     if @book.update(book_params)
       flash[:notice] = "successfully"
-      redirect_to user_path
+      redirect_to user_path(current_user.id)
     else
       render :edit
     end
@@ -56,5 +57,12 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
+
+
+  # def user_check
+  #   if current_user != @book.user
+  #     redirect_to user_path(current_user.id)
+  #   end
+  # end
 
 end

@@ -1,50 +1,42 @@
-<!--マイページ-->
- <!--user_path(current_user.id)-->
-
-<!--＜左＞-->
- 　<div>
-   <h3><%= @user.name %></h3>
-   <%= image_tag @user.get_profile_image(100,100) %>
-
-   <% if @user == current_user %>
-   <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-   <!--このままだと見えないので違うユーザーだったら自分の編集に飛ぶ-->
-   <!--または自分のeditに飛ぶようにする-->
+　<% if flash[:notice] %>
+    <p id="notice">
+       <%= flash[:notice] %>
+    </p>
    <% end %>
- 　</div>
 
+<!--マイページ-->
 
-<h1>画像投稿フォーム</h1>
-  <%= form_with model: @book do |f| %>
-
-    <h4>Title</h4>
-      <%= f.text_field :title %>
-    <h4>Opinion</h4>
-      <%= f.text_area :body %>
-    <%= f.submit 'Create Book' %>
-  <% end %>
-</div>
+<!--左-->
+<%= render 'users/profile', user: @user  %>
+<%= render 'books/newform', book: @nbook  %>
 <!--左-->
 
 
 <!--右-->
-<% @books.each do |book| %>
-  <div>
+<% @book.each do |book| %>
+<div>
 
-  <!--その人のマイページに飛ぶ-->
-  <div>
-  <p><%= image_tag book.user.get_profile_image(100,100) %></p>
-  <p><%= book.user.name %></p>
-  </div>
-  
-  
-  <!--その本の詳細ページに飛ぶ-->
-  <%= link_to book_path(book.id) do %>
-  <p><%= book.title %></p>
-  <% end %>
-  
-  <p><%= book.body %></p>
-  </div>
+   <div>
+
+    <%= image_tag book.user.get_profile_image(100,100) %>
+
+
+    <%= link_to user_path(book.user_id) do %>
+    <p><%= book.user.name %></p>
+    <% end %>
+
+   </div>
+
+
+
+    <%= link_to book_path(book.id) do %>
+    <p><%= book.title %></p>
+    <% end %>
+
+
+    <p><%= book.body %></p>
+
+</div>
 <% end %>
 
 <!--右-->
