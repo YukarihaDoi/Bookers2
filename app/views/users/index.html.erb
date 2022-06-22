@@ -1,14 +1,14 @@
-<!--User infoが部分テンプレートに正しく実装されている-->
+<!--ユーザー・一覧-->
 
 <!--＜左＞-->
-<!--User info部分1-->
- <div>
+　<div>
    <h3><%= @user.name %></h3>
    <%= image_tag @user.get_profile_image(100,100) %>
 
    <% if @user == current_user %>
    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
    <% end %>
+   <!--自分のeditに飛ぶ-->
  </div>
 
 <h1>画像投稿フォーム</h1>
@@ -21,18 +21,18 @@
     <%= f.submit 'Create Book' %>
   <% end %>
 </div>
-<!--User info部分1-->
-<!-- ユーザーの投稿一覧 -->
+<!--＜左＞-->
 
 <!--＜右＞-->
 <% @users.each do |h| %>
 <div>
 
-  <p>投稿ユーザー画像：<%= image_tag h.get_profile_image(100,100) %></p>
-
-  <p>ユーザーネーム：<%= h.name %></p>
-
+  <p><%= image_tag h.get_profile_image(100,100) %></p>
+  <p><%= h.name %></p>
+  
   <!--その人のマイページに飛ぶ-->
-  <!--その本の一覧ページに飛ぶ-->
+  <p>Show</p>
+
+
 </div>
 <% end %>

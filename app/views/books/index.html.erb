@@ -1,9 +1,5 @@
 <!--本全体（book）-->
-<!--editのback先-->
-<!--User infoが部分テンプレートに正しく実装されている-->
 <!--＜左＞-->
-
-<!--User info部分1-->
  <div>
    <h3><%= @user.name %></h3>
    <%= image_tag @user.get_profile_image(100,100) %>
@@ -11,6 +7,8 @@
    <% if @user == current_user %>
    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
    <% end %>
+   <!--このままだと見えないので違うユーザーだったら自分の編集に飛ぶ-->
+   <!--または自分のeditに飛ぶようにする-->
  </div>
 
 <h1>画像投稿フォーム</h1>
@@ -23,26 +21,28 @@
     <%= f.submit 'Create Book' %>
   <% end %>
 </div>
-<!--User info部分1-->
+<!--＜左＞-->
 
+<!--＜右＞-->
 <% @book.each do |book| %>
+
 <div>
-<p>投稿ユーザー画像：<%= image_tag book.user.get_profile_image(100,100) %></p>
-　<!--その人のマイページに飛ぶ-->
+
+<!--その人のマイページに飛ぶ-->
+<div>
+<p><%= image_tag book.user.get_profile_image(100,100) %></p>
+  <%= link_to book_path(book.id) do %>
+  <p><%= book.user.name %></p>
+  <% end %>
+</div> 
+  
 
  
-  <!--%= link_to user_path(book.id) do %>-->
-  <p>ユーザーネーム：<%= book.user.name %></p>
-  <!--% end %>-->
-  <!--その人のマイページに飛ぶ-->
-
-
+ <!--その本の詳細ページに飛ぶ-->
   <%= link_to book_path(book.id) do %>
   <p>Title：<%= book.title %></p>
   <% end %>
-  <!--その本の詳細ページに飛ぶ-->
-
-
+ 
 
   <p>Opinion：<%= book.body %></p>
 

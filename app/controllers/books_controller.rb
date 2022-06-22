@@ -25,9 +25,8 @@ class BooksController < ApplicationController
   def show
     @new_book = Book.new
     @book = Book.find(params[:id])
-
-    @user = @book.user
     # その人の情報が見れるように
+    @user = @book.user
   end
 
   def destroy
