@@ -1,26 +1,30 @@
-<!--ユーザーのマイページの作成-->
-<p>え</p>
+<!--ユーザーのマイページ-->
 
 <!--＜左＞-->
 <!--User info部分1-->
-<%= render 'user_info',book: @book  %>
-<!--User info部分1-->
-
-
- <!--＜左＞-->
  <div>
-   <h3><%= user.name %></h3>
-   <%= image_tag user.get_profile_image(100,100) %>
+   <h3><%= @user.name %></h3>
+   <%= image_tag @user.get_profile_image(100,100) %>
 
    <% if @user == current_user %>
-   <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
+   <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
    <% end %>
  </div>
 
-<!--＜右＞-->
+<h1>画像投稿フォーム</h1>
+  <%= form_with model: @book do |f| %>
+
+    <h4>Title</h4>
+      <%= f.text_field :title %>
+    <h4>Opinion</h4>
+      <%= f.text_area :body %>
+    <%= f.submit 'Create Book' %>
+  <% end %>
 </div>
+<!--User info部分1-->
 <!-- ユーザーの投稿一覧 -->
 
+<!--＜右＞-->
 <% @books.each do |book| %>
   <div>
   <!--%= link_to books_path(book.id) do %>-->
@@ -35,6 +39,5 @@
   <% if @user == current_user %>
 
   <% end %>
-
-</div>
+  </div>
 <% end %>
