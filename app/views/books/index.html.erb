@@ -1,4 +1,12 @@
 <!--本全体（books）-->
+<% if @nbook.errors.any? %>
+  <%= @nbook.errors.count %>errors prohibited this obj from being saved:
+  <ul>
+    <% @nbook.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <div class="container">
  <div class="row">
 

@@ -1,5 +1,5 @@
-　Welcome! You have signed up successfully.
-　<% if flash[:notice] %>
+ Welcome! You have signed up successfully.
+ <% if flash[:notice] %>
     <p id="notice">
        <%= flash[:notice] %>
     </p>
@@ -11,7 +11,7 @@
 
     <div class="col-md-3">
     <%= render 'users/profile', user: @user  %>
-　　<%= render 'books/newform',  book: @nbook  %>
+    <%= render 'books/newform',  book: @nbook  %>
     </div>
 
 

@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
 before_action :authenticate_user!, except: [:top, :about]
 
-# new_user_session_path
-# ログイン画面へとぶ
 
 before_action :configure_permitted_parameters, if: :devise_controller?
 
