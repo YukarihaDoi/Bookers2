@@ -2,6 +2,8 @@ class BooksController < ApplicationController
 
 # before_action :user_check, only: [:edit,:update]
   # newbook
+# before_action :user_check, only: [:edit,:update]
+
   def new
     @nbook = Book.new
   end

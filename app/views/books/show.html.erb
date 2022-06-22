@@ -1,39 +1,53 @@
+<div class="container">
+ <div class="row">
 
-
-
-
-<!--本詳細ページ-->
-
-
-
-  <!--＜左＞-->
- <%= render 'books/newform', book: @nbook  %>
-  <!--＜左＞-->
-
-
-
- <!--＜右＞-->
-  <div>
-
-    <div>
-      <p><%= image_tag @book.user.get_profile_image(100,100) %></p>
-      <p><%= @book.user.name %></p>
+    <div class="col-md-3">
+    <%= render 'users/profile', user: @user  %>
+    <%= render 'books/newform',  book: @nbook  %>
     </div>
 
 
-    <!--%= link_to "",book_path(book.id) do %>-->
-      <p>Title：<%= @book.title %></p>
-    <!--% end %>-->
+     <div class="col-md-8">
+     <table class="table table-striped">
+       <thead>
+          <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Opinion</th>
+              <th></th>
+              <th colspan="4"></th>
+          </tr>
+       </thead>
 
+      <tbody>
+           <tr>
+                <td>
+                 <%= image_tag @book.user.get_profile_image(100,100) %>
+                <p><%= @book.user.name %></p>
+                </td>
 
-    <p>Opinion：<%= @book.body %></p>
+               <td>
+               <%= link_to book_path(@book.id) do %>
+               <p><%= @book.title %></p>
+               <% end %>
+               </td>
 
+               <td>
+                <p><%= @book.body %></p>
+               </td>
+               <td>
+                 <% if @book.user == current_user %>
+                 <%= link_to "destroy", book_path(@book), method: :delete %>
+                 <%= link_to "edit", edit_book_path %>
+                 <% end %>
+               </td>
 
-    <% if @book.user == current_user %>
-    <%= link_to "destroy", book_path(@book), method: :delete %>
-    <%= link_to "edit", edit_book_path %>
-    <% end %>
+           </tr>
+       </tbody>
+     </table>
+     </div>
 
   </div>
+</div>
 
-  <!--＜右＞-->
+

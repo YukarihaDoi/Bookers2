@@ -1,31 +1,48 @@
 <!--本全体（books）-->
+<div class="container">
+ <div class="row">
 
-<!--＜左＞-->
- <%= render 'users/profile', user: @user  %>
- <%= render  'books/newform',  book: @nbook  %>
-
- <!--＜左＞-->
-
-<% @books.each do |book| %>
-
- <div>
-<!--その人のマイページに飛ぶ-->
- <div>
-    <p><%= image_tag book.user.get_profile_image(100,100) %></p>
+    <div class="col-md-3">
+    <%= render 'users/profile', user: @user  %>
+    <%= render 'books/newform',  book: @nbook  %>
+    </div>
 
 
-    <%= link_to user_path(book.user_id) do %>
-    <p><%= book.user.name %></p>
-    <% end %>
- 
- </div>
+     <div class="col-md-8">
+     <table class="table table-striped">
+       <thead>
+          <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Opinion</th>
+              <th colspan="3"></th>
+          </tr>
+       </thead>
 
+      <tbody>
+      <% @books.each do |book| %>
+           <tr>
+               <td><%= image_tag book.user.get_profile_image(100,100) %>
 
- <!--その本の詳細ページに飛ぶ-->
-  <%= link_to book_path(book.id) do %>
-  <p>Title：<%= book.title %></p>
-  <% end %>
+             　<%= link_to user_path(book.user_id) do %>
+                <p><%= book.user.name %></p>
+                <% end %>
+                </td>
 
-  <p>Opinion：<%= book.body %></p>
+               <td>
+               <%= link_to book_path(book.id) do %>
+               <p><%= book.title %></p>
+               <% end %>
+               </td>
+
+               <td>
+                <p><%= book.body %></p>
+               </td>
+           </tr>
+        <% end %>
+       </tbody>
+     </table>
+     </div>
+
+  </div>
 </div>
-<% end %>

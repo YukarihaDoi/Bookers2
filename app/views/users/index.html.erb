@@ -1,22 +1,40 @@
 <!--ユーザー・一覧-->
 
-<!--＜左＞-->
-<%= render 'users/profile', user: @user  %>
-<%= render 'books/newform',  book: @nbook  %>
-<!--＜左＞-->
+<div class="container">
+ <div class="row">
+
+    <div class="col-md-3">
+    <%= render 'users/profile', user: @user  %>
+　　<%= render 'books/newform',  book: @nbook  %>
+    </div>
 
 
-<!--＜右＞-->
-<% @users.each do |h| %>
+     <div class="col-md-8">
+     <table class="table table-striped">
+       <thead>
+          <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th colspan="3"></th>
+          </tr>
+       </thead>
+
+      <tbody>
+      <% @users.each do |h| %>
+           <tr>
+               <td><%= image_tag h.get_profile_image(100,100) %></td>
+               <td><%= h.name %></td>
+               <td><%= link_to "Show", user_path(h) %></td>
+           </tr>
+                   <% end %>
+       </tbody>
+     </table>
+     </div>
+
+  </div>
+</div>
 
 
-  <p><%= image_tag h.get_profile_image(100,100) %></p>
-  <p><%= h.name %></p>
-
-  <!--その人のマイページに飛ぶ-->
-  <!--user GET    /users/:id(.:format)    users#show-->
-
-   <p><%= link_to "Show", user_path(h) %></p>
 
 
-<% end %>

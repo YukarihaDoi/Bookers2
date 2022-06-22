@@ -1,13 +1,16 @@
-<!--%= render 'list', post_images: @post_images %>-->
-<!--<!-render [部分テンプレートファイルの指定], [ローカル変数]:[渡す値] %>-->-->
-
-
-  <h1>画像投稿フォーム</h1>
-  <%= form_with model: book do |f| %>
-
-    <h4>Title</h4>
+<div>
+  <table>
+   <tbody>
+     <h2>New book</h2>
+　　　<tr class="table table-striped">
+　　　 <%= form_with model: book do |f| %>
+   　　<h4>Title</h4>
       <%= f.text_field :title %>
-    <h4>Opinion</h4>
+    　<h4>Opinion</h4>
       <%= f.text_area :body %>
-    <%= f.submit 'Create Book' %>
-  <% end %>
+    　<%= f.submit 'Create Book' %>
+    　 <% end %>
+   </tr>
+   </tbody>
+   </table>
+</div>

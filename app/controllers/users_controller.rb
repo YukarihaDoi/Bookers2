@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "successfully"
-      redirect_to books_path
+      redirect_to user_path(@user)
     else
       render :edit
     end
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image)
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
  def user_check
