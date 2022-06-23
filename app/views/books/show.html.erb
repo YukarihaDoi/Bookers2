@@ -1,4 +1,8 @@
-
+<% if flash[:notice] %>
+    <p id="notice">
+       <%= flash[:notice] %>
+    </p>
+   <% end %>
 
 <div class="container">
  <div class="row">
@@ -37,15 +41,20 @@
                 <p><%= @book.body %></p>
                </td>
 
-                 <% if @book.user == current_user %>
+
                  <td>
                 <%= link_to "edit", edit_book_path %>
                 </td>
+                <!--編集画面に遷移する (FAILED - 8)-->
+
                 <td>
                  <%= link_to "destroy", book_path(@book), method: :delete %>
-                 <a></a>
+                 <!--application.html.erbにjavascript_pack_tagを含んでいる (FAILED - 8)-->
+                <!--正しく削除される (FAILED - 10)-->
+                <!--リダイレクト先が、投稿一覧画面になっている (FAILED --->
                 </td>
-                <% end %>
+
+
            </tr>
        </tbody>
      </table>
