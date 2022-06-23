@@ -32,8 +32,10 @@
         <ul class="navbar-nav ml-auto">
 
         <% if user_signed_in? %>
-        <li class="nav-item">
-        <!--<i class="fa-regular fa-house-chimney"></i>-->
+        <div class="input-group-prepend">
+        <!--<span class="input-group-text" aria-hidden="true"><i class="fa-regular fa-house-chimney"></i></span>-->
+        <!--</div>-->
+        <!--<li class="nav-item">-->
         <%= link_to 'Home', user_path(current_user.id) ,class: 'nav-link text-white' %>
         </li>
 
