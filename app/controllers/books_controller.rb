@@ -39,7 +39,7 @@ before_action :user_check, only: [:edit,:update,:destroy]
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    redirect_to user_path(current_user.id)
+    redirect_to books_path
   end
 
 

@@ -52,12 +52,16 @@
                <td><%= book.body %></td>
 
                 <td>
-                <%= link_to "編集", edit_book_path(book.id) %>
+                <%= link_to edit_book_path(book.id), class:"btn btn-success" do %>
+                編集
+                <%end%>
                 </td>
 
 
                 <td>
-                 <%= link_to "削除", book_path(book), method: :delete %>
+                 <%= link_to book_path(book), method: :delete ,class:"btn btn-danger" do%>
+                 削除
+                 <%end%>
                  <!--application.html.erbにjavascript_pack_tagを含んでいる (FAILED - 8)-->
                </td>
            </tr>
