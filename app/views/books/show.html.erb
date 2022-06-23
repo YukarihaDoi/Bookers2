@@ -1,3 +1,5 @@
+
+
 <div class="container">
  <div class="row">
 
@@ -11,19 +13,18 @@
      <table class="table table-striped">
        <thead>
           <tr>
-              <th></th>
-              <th>Title</th>
-              <th>Opinion</th>
-              <th></th>
+           <h2>Book detail</h2>
               <th colspan="4"></th>
           </tr>
        </thead>
 
       <tbody>
            <tr>
-                <td>
+              <td>
+                 <%= link_to user_path(@book.user.id) do %>
                  <%= image_tag @book.user.get_profile_image(100,100) %>
                 <p><%= @book.user.name %></p>
+                <% end %>
                 </td>
 
                <td>
@@ -35,13 +36,16 @@
                <td>
                 <p><%= @book.body %></p>
                </td>
-               <td>
-                 <% if @book.user == current_user %>
-                 <%= link_to "destroy", book_path(@book), method: :delete %>
-                 <%= link_to "edit", edit_book_path %>
-                 <% end %>
-               </td>
 
+                 <% if @book.user == current_user %>
+                 <td>
+                <%= link_to "edit", edit_book_path %>
+                </td>
+                <td>
+                 <%= link_to "destroy", book_path(@book), method: :delete %>
+                 <a></a>
+                </td>
+                <% end %>
            </tr>
        </tbody>
      </table>

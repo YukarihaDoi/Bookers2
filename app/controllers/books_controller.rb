@@ -12,12 +12,15 @@ class BooksController < ApplicationController
      @nbook = Book.new(book_params)
      @user = current_user
      @books = Book.all
+
      if @nbook.save
+
       flash[:notice] = "successfully"
-      redirect_to user_path(current_user.id)
+      redirect_to book_path(@nbook.id)
      else
       render :index
      end
+
   end
 
 
@@ -49,8 +52,8 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
 
     if @book.update(book_params)
-      flash[:notice] = "successfully"
-      redirect_to user_path(current_user.id)
+      flash[:notice] = "You have updated user successfully."
+      redirect_to book_path(@book.id)
     else
       render :edit
     end
@@ -60,7 +63,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body).merge(user_id:current_user.id)
   end
 
 
