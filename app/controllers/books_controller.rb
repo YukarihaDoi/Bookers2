@@ -28,11 +28,13 @@ before_action :user_check, only: [:edit,:update,:destroy]
     @user = current_user
   end
 
+
   def show
     @nbook = Book.new
     @book = Book.find(params[:id])
     @user = @book.user
   end
+
 
   def destroy
     @book = Book.find(params[:id])

@@ -35,12 +35,13 @@
       <tbody>
       <% @books.each do |book| %>
            <tr>
-               <td><%= image_tag book.user.get_profile_image(80,80) %>
 
-             　<!--%= link_to user_path(book.user_id) do %>-->
-                <!--<p>%= book.user.name %></p>-->
-                <!--% end %>-->
-                </td>
+               <td>
+                <%= link_to user_path(book.user) do %>
+                <%= image_tag book.user.get_profile_image(80,80) %>
+                <% end %>
+
+               </td>
 
                <td>
                <%= link_to book_path(book.id) do %>
