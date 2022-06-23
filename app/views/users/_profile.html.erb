@@ -1,13 +1,30 @@
+<!--ユーザ一覧画面でレンチアイコンが表示される (FAILED -->
+<!--ユーザ詳細画面でレンチアイコンが表示される (FAILE-->
+<!--投稿一覧画面でレンチアイコンが表示される (FAILED - 24)-->
+      <!--投稿詳細画面でレンチアイコンが表示される (FAILED - -->
 <div>
-  <table>
-   <tbody>
-     <h2>User info</h2>
-     <tr class="table table-striped">
+  <p id="notice"></p>
+   <h2>User info</h2>
+  <table class="table table-stripe">
+
+   <thead>
+     <tr>
+
     <%= image_tag user.get_profile_image(100,100) %>
-    <p>name<%= user.name %></p>
-    <p>introduction<%= user.introduction %></p>
-    <p><%= link_to "Update User", edit_user_path(user) %></p>
-   </tr>
-   </tbody>
-   </table>
+     </tr>
+
+     <tr>
+       <th>name</th>
+       <th><%= user.name %></th>
+     </tr>
+
+    <tr>
+      <th>introduction</th>
+      <th><%= user.introduction %></th>
+    </tr>
+  </thead>
+</table>
 </div>
+
+<br>
+<p><%= link_to "Update User", edit_user_path(user) %></p>

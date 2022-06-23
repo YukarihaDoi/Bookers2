@@ -14,21 +14,22 @@
     <%= render 'books/newform',  book: @nbook  %>
     </div>
 
+    <div class="col-md-1">
+    </div>
 
-     <div class="col-md-8">
-     <table class="table table-striped">
+     <div class="col-md-8 ofset-md-1">
+       <p id="notice"></p>
+       <table class="table table-striped">
+
        <thead>
-          <tr>
-           <h2>Book detail</h2>
-              <th colspan="4"></th>
-          </tr>
+         <h2>Book detail</h2>
        </thead>
 
       <tbody>
            <tr>
               <td>
                  <%= link_to user_path(@book.user.id) do %>
-                 <%= image_tag @book.user.get_profile_image(100,100) %>
+                 <%= image_tag @book.user.get_profile_image(80,80) %>
                 <p><%= @book.user.name %></p>
                 <% end %>
                 </td>
@@ -47,13 +48,10 @@
                  <td>
                 <%= link_to "edit", edit_book_path %>
                 </td>
-                <!--編集画面に遷移する (FAILED - 8)-->
+
 
                 <td>
                  <%= link_to "destroy", book_path(@book), method: :delete %>
-                 <!--application.html.erbにjavascript_pack_tagを含んでいる (FAILED - 8)-->
-                <!--正しく削除される (FAILED - 10)-->
-                <!--リダイレクト先が、投稿一覧画面になっている (FAILED --->
                 </td>
 
 

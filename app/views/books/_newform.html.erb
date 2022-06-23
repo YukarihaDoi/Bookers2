@@ -1,16 +1,38 @@
+
+
+
+
+
 <div>
+ <p id="notice"></p>
+ <h2>New book</h2>
   <table>
    <tbody>
-     <h2>New book</h2>
-     <tr class="table table-striped">
-     <%= form_with model: book do |f| %>
-      <h4>Title</h4>
-     <%= f.text_field :title %>
-     <h4>Opinion</h4>
-     <%= f.text_area :body %>
-     <%= f.submit 'Create Book' %>
+     <tr class="table">
+
+<%= form_with model: book do |f| %>
+   <!--<div class="input-group mb-3 mt-4">-->
+     <div class="input-group-prepend">
+
+     <!--<span class="input-group-text" aria-hidden="true"><i class="fas fa-building"></i></span>-->
+     </div>
+      <label>Title</lavbl>
+      <%= f.text_field :title, class:"form-control" %>
+   <!--</div>-->
+    <label>Opinion</lavbl>
+      <%= f.text_area :body,class:"form-control",rows:"3"%>
+      <%= f.submit 'Create Book',class:"btn btn-md btn-block btn-info mt-4" %>
       <% end %>
    </tr>
    </tbody>
    </table>
 </div>
+
+
+
+
+
+
+
+
+
