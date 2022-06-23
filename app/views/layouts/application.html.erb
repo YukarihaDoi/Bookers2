@@ -34,28 +34,27 @@
       <% if user_signed_in? %>
         <div class="input-group-prepend">
 
-        <li>
-        <a class="nav-link text-white" href= "/users/id" >
-        <i class="fas fa-home text-white"></i>Home</a>
-        </li>
-        <!--user_path(current_user.id) -->
+        <!--<li>-->
+        <!--<a class="nav-link text-white" href= "/users/user.id">-->
+        <!--<i class="fas fa-home text-white"></i>Home</a>-->
+        <!--</li>-->
+　　　　<!--基本aタグは使わない-->
 
-        <li>
-        <a class="nav-link text-white" href= "/users" >
-        <i class="fas fa-users"></i>Users</a>
-        </li>
-        <!--users_path-->
+        <%= link_to user_path(current_user.id) ,class:"nav-link text-light" do %>
+          <i class="fas fa-home"></i>Home
+        <%end%>
+        <%= link_to users_path ,class:"nav-link text-light" do %>
+          <i class="fas fa-users"></i>Users
+        <%end%>
+        <%= link_to books_path ,class:"nav-link text-light" do %>
+          <i class="fas fa-book-open"></i>Books
+        <%end%>
+        <%= link_to destroy_user_session_path, method: :delete ,class:"nav-link text-light" do %>
+        <i class="fas fa-sign-out-alt"></i>Log out
+        <%end%>
 
-        <li>
-        <a class="nav-link text-white" href= "/books" >
-        <i class="fas fa-book-open"></i>Books</a>
-        </li>
-        <!--books_path-->
-       <li>
-         <a class="nav-link text-white", method :delete, href="/">
-           <i class="fas fa-sign-out-alt"></i>Log out</a>
-        </li>
         <!--destroy_user_session_path-->
+
         <% else %>
         <li>
         <a class="nav-link text-white" href= "/" >
