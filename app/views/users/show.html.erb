@@ -14,11 +14,11 @@
     <%= render 'books/newform', book: @nbook %>
     </div>
 
-    <div class="col-md-1">
+    <!--<div class="col-md-1">-->
 
-    </div>
+    <!--</div>-->
 
-    <div class="col-md-8">
+    <div class="col-md-8 offset-md-1">
     <h2>Books</h2>
     <table class="table table-hover table-inverse">
        <thead>
@@ -48,21 +48,23 @@
                  <% end %>
                </td>
 
-               <td><%= book.body %></td>
+               <td><%= book.body %> </td>
 
+                <% if @user.id == current_user.id %>
                 <td>
                 <%= link_to edit_book_path(book.id), class:"btn btn-success" do %>
-                編集
+                Edit
                 <%end%>
-                </td>
-
-
-                <td>
+                 <!--%= link_to "編集", edit_book_path %>-->
+                 </td>
+                 <td>
                  <%= link_to book_path(book), method: :delete ,class:"btn btn-danger" do%>
-                 削除
+                 Destroy
                  <%end%>
+                 <!--%= link_to "削除", book_path(book) , method: :delete %>-->
                  <!--application.html.erbにjavascript_pack_tagを含んでいる (FAILED - 8)-->
                </td>
+          <%end%>
            </tr>
       </tbody>
       <% end %>
