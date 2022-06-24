@@ -1,69 +1,63 @@
 <!--投稿詳細-->
-<!--グリッドシステムのテスト: container, row, col-md-〇を正しく使-->
 <% if flash[:notice] %>
-    <p id="notice">
-       <%= flash[:notice] %>
-    </p>
-   <% end %>
+    <p id="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<p id="notice"></p>
 
 <div class="container">
  <div class="row">
 
     <div class="col-md-3">
-    <%= render 'users/profile', user: @user  %>
-    <%= render 'books/newform',  book: @nbook  %>
+    <%= render 'users/profile', user: @user %>
+    <br>
+    <%= render 'books/newform',  book: @nbook %>
     </div>
 
     <div class="col-md-1">
+
     </div>
 
-     <div class="col-md-8 ofset-md-1">
-       <p id="notice"></p>
-       <table class="table table-striped">
+    <div class="col-md-8">
+     <h2>Book detail</h2>
+    <table class="table table-striped">
 
-       <thead>
-         <h2>Book detail</h2>
-       </thead>
+     <tbody>
+      <tr></tr>
+      <tr>
+       <td>
+        <%= link_to user_path(@book.user.id) do %>
+         <%= image_tag @book.user.get_profile_image(100,100) %>
+         <p><%= @book.user.name %></p>
+        <% end %>
+       </td>
 
-      <tbody>
-           <tr>
-              <td>
-                 <%= link_to user_path(@book.user.id) do %>
-                 <%= image_tag @book.user.get_profile_image(80,80) %>
-                <p><%= @book.user.name %></p>
-                <% end %>
-                </td>
+       <td>
+        <%= link_to book_path(@book.id) do %>
+         <p><%= @book.title %></p>
+        <% end %>
+       </td>
 
-               <td>
-               <%= link_to book_path(@book.id) do %>
-               <p><%= @book.title %></p>
-               <% end %>
-               </td>
+       <td>
+        <p><%= @book.body %></p>
+       </td>
 
-               <td>
-                <p><%= @book.body %></p>
-               </td>
+       <td>
+        <%= link_to edit_book_path(@book.id) , class:"btn btn-success" do %>
+        編集
+        <%end%>
+       </td>
 
-　　　　　　　　<td>
-                <%= link_to edit_book_path(@book.id), class:"btn btn-success" do %>
-                編集
-                <%end%>
-                </td>
+       <td>
+        <%= link_to book_path(@book), method: :delete,class:"btn btn-danger" do%>
+        削除
+        <%end%>
+       </td>
 
+      </tr>
+     </tbody>
 
-                <td>
-                 <%= link_to book_path(@book), method: :delete ,class:"btn btn-danger" do%>
-                 削除
-                 <%end%>
-                 <!--application.html.erbにjavascript_pack_tagを含んでいる (FAILED - 8)-->
-                </td>
-
-
-           </tr>
-       </tbody>
-     </table>
-     </div>
-
-  </div>
+    </table>
 </div>
-
+</div>
+</div>

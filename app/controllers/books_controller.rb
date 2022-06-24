@@ -14,6 +14,7 @@ before_action :user_check, only: [:edit,:update,:destroy]
 
       flash[:notice] = "successfully"
       redirect_to book_path(@nbook.id)
+
      else
       render :index
      end

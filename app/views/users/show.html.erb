@@ -1,39 +1,37 @@
  <!--マイページ,ユーザー詳細-->
- <!--グリッドシステムのテスト: container, row, col-md-〇を正しく使え-->
  <% if flash[:notice] %>
-    <p id="notice">
-       <%= flash[:notice] %>
-    </p>
-   <% end %>
+ <p id="notice"><%= flash[:notice] %></p>
+ <% end %>
+
+ <p id="notice"></p>
 
 <div class="container">
  <div class="row">
 
     <div class="col-md-3">
-    <%= render 'users/profile', user: @user  %>
-    <%= render 'books/newform',  book: @nbook  %>
+    <%= render 'users/profile', user: @user %>
+    <br>
+    <%= render 'books/newform', book: @nbook %>
     </div>
 
     <div class="col-md-1">
+
     </div>
 
-     <div class="col-md-8 ofset-md-1">
-     <p id="notice"></p>
-     <h2>Books</h2>
-     <table class="table table-striped">
+    <div class="col-md-8">
+    <h2>Books</h2>
+    <table class="table table-hover table-inverse">
        <thead>
           <tr>
-              <th></th>
+              <th>Image</th>
               <th>Title</th>
               <th>Opinion</th>
               <th></th>
-              <th></th>
-              <th colspan="4"></th>
           </tr>
        </thead>
 
-      <tbody>
       <% @books.each do |book| %>
+      <tbody>
            <tr>
                <td>
                <%= image_tag book.user.get_profile_image(80,80) %>
@@ -65,10 +63,11 @@
                  <!--application.html.erbにjavascript_pack_tagを含んでいる (FAILED - 8)-->
                </td>
            </tr>
+      </tbody>
       <% end %>
-       </tbody>
-     </table>
-     </div>
+
+    </table>
+    </div>
 
   </div>
 </div>

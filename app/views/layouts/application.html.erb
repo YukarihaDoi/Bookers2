@@ -12,27 +12,151 @@
      <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="d-flex flex-column vh-100">
-    <header>
 
-      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <div class="container">
+<body>
 
-        <a class="navbar-brand text-white " href="/"><span >Bookers</span></a>
-
-
-        <!--隠れた時に出てくる3本線表記-->
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-        data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+  <header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   <div class="container">
 
 
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
+   　<a class="nav-link text-light" href="/"><span >Bookers</span></a>
 
-      <% if user_signed_in? %>
-        <div class="input-group-prepend">
+   　<button class="navbar-toggler" type="button" data-toggle="collapse"
+     data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+     </button>
+
+     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+       <ul class="navbar-nav ml-auto">
+         <div class="input-group-prepend">
+          <% if user_signed_in? %>
+             <li>
+             <%= link_to user_path(current_user.id) ,class:"nav-link text-light" do %>
+             <i class="fas fa-home"></i>Home
+             <%end%>
+             </li>
+
+             <li>
+             <%= link_to users_path ,class:"nav-link text-light" do %>
+             <i class="fas fa-users"></i>Users
+             <%end%>
+             </li>
+
+             <li>
+             <%= link_to books_path ,class:"nav-link text-light" do %>
+             <i class="fas fa-book-open"></i>Books
+             <%end%>
+             </li>
+
+             <li>
+             <%= link_to destroy_user_session_path, method: :delete ,class:"nav-link text-light" do %>
+             <i class="fas fa-sign-out-alt"></i>Log out
+             <%end%>
+             </li>
+
+          <% else %>
+
+             <li>
+             <%= link_to root_path , class:"nav-link text-light" do %>
+             <i class="fas fa-home"></i>Home
+             <%end%>
+             </li>
+
+             <li>
+             <%= link_to about_path, class:"nav-link text-light" do %>
+             <i class="fas fa-link"></i>About
+             <%end%>
+             </li>
+
+             <li>
+             <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
+             <i class="fas fa-user-plus"></i>Sign up
+             <%end%>
+             </li>
+
+             <li>
+             <%= link_to new_user_session_path , class:"nav-link text-light" do %>
+             <i class="fas fa-sign-in-alt"></i>Log in
+             <%end%>
+             </li>
+
+          <% end %>
+         </div>
+       </ul>
+     </div>
+
+    </div>
+   </nav>
+  </header>
+
+
+  <main>
+  <%= yield %>
+  </main>
+
+
+  <footer>
+　<div class="container">
+       <div class="row">
+       <div class="mx-auto">
+         <p>CopyRight Infratop.inc</p>
+       </div>
+       </div>
+     </div>
+  </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<header>-->
+  <!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+  <!--div class="container">-->
+
+    <!--<a class="navbar-brand text-white " href="/"><span >Bookers</span></a>-->
+
+    <!--<button class="navbar-toggler" type="button" data-toggle="collapse"-->
+    <!--data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--<span class="navbar-toggler-icon"></span>-->
+    <!--</button>-->
+
+
+    <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+     <!--<ul class="navbar-nav ml-auto">-->
+
+      <!--% if user_signed_in? %>-->
+        <!--div class="input-group-prepend">-->
 
         <!--<li>-->
         <!--<a class="nav-link text-white" href= "/users/user.id">-->
@@ -40,62 +164,37 @@
         <!--</li>-->
 　　　　<!--基本aタグは使わない-->
 
-        <%= link_to user_path(current_user.id) ,class:"nav-link text-light" do %>
-          <i class="fas fa-home"></i>Home
-        <%end%>
-        <%= link_to users_path ,class:"nav-link text-light" do %>
-          <i class="fas fa-users"></i>Users
-        <%end%>
-        <%= link_to books_path ,class:"nav-link text-light" do %>
-          <i class="fas fa-book-open"></i>Books
-        <%end%>
-        <%= link_to destroy_user_session_path, method: :delete ,class:"nav-link text-light" do %>
-        <i class="fas fa-sign-out-alt"></i>Log out
-        <%end%>
+        <!--%= link_to user_path(current_user.id) ,class:"nav-link text-light" do %>-->
+        <!--  <i class="fas fa-home"></i>Home-->
+        <!--%end%>-->
+        <!--%= link_to users_path ,class:"nav-link text-light" do %>-->
+        <!--  <i class="fas fa-users"></i>Users-->
+        <!--%end%>-->
+        <!--%= link_to books_path ,class:"nav-link text-light" do %>-->
+          <!--<i class="fas fa-book-open"></i>Books-->
+        <!--%end%>-->
+        <!--%= link_to destroy_user_session_path, method: :delete ,class:"nav-link text-light" do %>-->
+        <!--<i class="fas fa-sign-out-alt"></i>Log out-->
+        <!--%end%>-->
 
         <!--destroy_user_session_path-->
 
-        <% else %>
-        <li>
-        <a class="nav-link text-white" href= "/" >
-        <i class="fas fa-home text-white"></i>Home</a>
-        </li>
+        <!--% else %>-->
 
-        <li>
-         <a class="nav-link text-white" href= "/home/about">
-         <i class="fas fa-link"></i>About</a>
-        </li>
+        <!--%= link_to root_path ,class:"nav-link text-light" do %>-->
+        <!--<i class="fas fa-home"></i>Home-->
+        <!--%end%>-->
 
-        <li>
-          <a class="nav-link text-white" href= "/users/sign_up">
-          <i class="fas fa-user-plus"></i>Sign up</a>
-        </li>
+        <!--<li>-->
+        <!--  <a class="nav-link text-white" href= "/users/sign_in">-->
+        <!--  <i class="fas fa-sign-in-alt"></i>Log in</a>-->
+        <!--</li>-->
 
-        <li>
-          <a class="nav-link text-white" href= "/users/sign_in">
-          <i class="fas fa-sign-in-alt"></i>Log in</a>
-        </li>
+      <!--% end %>-->
+<!--        </div>-->
+<!--        </ul>-->
+<!--  </div>-->
+<!--  </nav>-->
+<!--</header>-->
 
-      <% end %>
-        </div>
-        </ul>
-      </div>
-      </nav>
-    </header>
-
-
-    <main class="mb-auto">
-        <%= yield %>
-    </main>
-
-    <footer class="shadow-sm">
-      <div class="container">
-       <div class="row no-gutters">
-       <div class="col-md-4">
-         <p>CopyRight Infratop.inc</p>
-       </div>
-       </div>
-     </div>
-    </footer>
-  </body>
-</html>
+<!--<main>%= yield %></main>-->
